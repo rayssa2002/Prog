@@ -1,18 +1,24 @@
 from config import *
-from modelo import Filme
+from modelo import Produtora, Filme, Elenco
 
 @app.route("/")
 def inicio():
     return 'Sistema para Cadastro para Filmes '+\
         '<a href="/listar_filmes">Listar Filmes</a>'
 
-@app.route("/listar_filmes")
-def listar_filmes():
-    filmes = db.session.query(Filme).all()
-    filme_em_json = [Filme.json() for Filme in filmes]
-    
-    return (jsonify(filme_em_json))
-
+@app.route("/listar/<string:classe>")
+def listar(classe):
+    dados = None
+    if classe == "Produtora":
+      dados = db.session.query(Produtora).all()
+    elif classe == "Filme":
+      dados = db.session.query(Filme).all()
+    elif classe == "Elenco":
+      dados = db.session.query(Elenco).all()
+    lista_jsons = [ x.json() for x in dados ]
+    resposta = jsonify(lista_jsons)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
 
 @app.route("/incluir_filmes", methods=['POST'])
 def incluir_filmes():
