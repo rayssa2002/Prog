@@ -19,22 +19,22 @@ $(function() {
                 '<td>' + resposta[i].pais + '</td>' + 
                 '<td>' + resposta[i].ano + '</td>' + 
                 '<td><a href=# id="excluir_' + resposta[i].id + '" ' + 
-                  'class="excluir_produtora"><img src="imagens/excluir.png" '+
+                  'class="excluir_produtora"><img src="img/excluir.png" '+
                   'alt="Excluir produtora" title="Excluir produtora"></a>' + 
                 '</td>' + 
                 '</tr>';
-                $('#corpoTabelaProdutora').append(lin);
+                $('#corpoTabelaProdutoras').append(lin);
             }
         }
     }
     
-    $(document).on("click", "#linkListarProdutora", function() {
+    $(document).on("click", "#linkListarProdutoras", function() {
         exibir_produtoras();
     });
     
     function exibir_filmes() {
         $.ajax({
-            url: 'http://localhost:5000/listarFilme',
+            url: 'http://localhost:5000/listar/Filme',
             method: 'GET',
             dataType: 'json',
             success: listar,
@@ -55,7 +55,7 @@ $(function() {
                 '<td>' + resposta[i].premio + '</td>' + 
                 '<td>' + resposta[i].produtora.nome + '</td>' + 
                 '<td><a href=# id="excluir_' + resposta[i].id + '" ' + 
-                  'class="excluir_filme"><img src="imagens/excluir.png" '+
+                  'class="excluir_filme"><img src="img/excluir.png" '+
                   'alt="Excluir filme" title="Excluir filme"></a>' + 
                 '</td>' + 
                 '</tr>';
@@ -102,20 +102,19 @@ $(function() {
     });
 
     $(document).on("click", "#btnIncluirFilme", function validarform() {
-        if ((document.getElementById("campoId").value.length < 3) || (document.getElementById("campoNome").value.length < 3) || (document.getElementById("campoGenero").value.length < 1) || 
-        (document.getElementById("campoAnodeLancamento").value.length < 5) || (document.getElementById("campoDiretor").value.length < 9) ||
-        (document.getElementById("campoPremio").value.length < 1)) {
+        if ((document.getElementById("campoNome").value.length < 3) || (document.getElementById("campoGenero").value.length < 5) || 
+        (document.getElementById("campoAnodeLancamento").value.length < 1) || (document.getElementById("campoDiretor").value.length < 1) || 
+        (document.getElementById("campoPremio").value.length < 1) || (document.getElementById("campoProdutoraId").value.length < 1)) {
             alert('Por favor, preencha todos os campos');
         } 
         else {
-            id = $("#campoId").val();
             nome = $("#campoNome").val();
             genero = $("#campoGenero").val();
             ano_de_lancamento = $("#campoAnodeLancamento").val();
             diretor = $("#campoDiretor").val();
             premio = $("#campoPremio").val();
             produtora_id = $("#campoProdutoraId").val();
-            var dados = JSON.stringify({  id: id, nome: nome, genero: genero, ano_de_lancamento: ano_de_lancamento, diretor: diretor, premio: premio, produtora_id: produtora_id});
+            var dados = JSON.stringify({ nome: nome, genero: genero, ano_de_lancamento: ano_de_lancamento, diretor: diretor,premio: premio, produtora_id: produtora_id});
             $.ajax({
                 url: 'http://localhost:5000/incluir_filme',
                 type: 'POST',
@@ -128,14 +127,13 @@ $(function() {
         }
         function filmeIncluido (retorno) {
             if (retorno.resultado == "ok") {
-                alert("Filme incluída com sucesso!");
-                $("#campoId").val("");
+                alert("Filme incluído com sucesso!");
                 $("#campoNome").val("");
                 $("#campoGenero").val("");
                 $("#campoAnodeLancamento").val("");
                 $("#campoDiretor").val("");
                 $("#campoPremio").val("");
-                $("#campoProdutorasId").val("")
+                $("#campoProdutoraId").val("")
             } 
             else {
                 alert(retorno.resultado + ":" + retorno.detalhes);
@@ -197,7 +195,7 @@ $(function() {
                 '<td>' + resposta[i].categoria + '</td>' + 
                 '<td>' + resposta[i].filme.nome + '</td>' + 
                 '<td><a href=# id="excluir_' + resposta[i].id + '" ' + 
-                  'class="excluir_elenco"><img src="imagens/excluir.png" '+
+                  'class="excluir_elenco"><img src="img/excluir.png" '+
                   'alt="Excluir ator/atriz" title="Excluir ator/atriz"></a>' + 
                 '</td>' + 
                 '</tr>';

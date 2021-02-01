@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 path = os.path.dirname(os.path.abspath(__file__))
-arquivobd = os.path.join(path, 'filmes.db')
+arquivobd = os.path.join(path, 'filme.db')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+arquivobd
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

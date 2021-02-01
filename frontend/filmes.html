@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="PT-BR">      
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,10 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-    
+
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
     <title>Cadastro de Filmes</title>
+
     <style>
         body {
             font-family: 'Raleway', sans-serif;
@@ -24,8 +26,8 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
 
-            <img src="../img/logo.png" height="60px" class="navbar-brand rounded-circle">
-        
+            <img src="img/logo.png" height="60px" class="navbar-brand nav-justified">
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav mr-auto">
                     <span class="navbar-text">My Family Cinema - Cadastro de Filmes</span>
@@ -38,7 +40,7 @@
                           Listar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="#" id="linkListarProdutoras">Produtoras</a>
+                          <a class="dropdown-item" href="#" id="linkListarEmissoras">Produtoras</a>
                           <a class="dropdown-item" href="#" id="linkListarFilmes">Filmes</a> 
                           <a class="dropdown-item" href="#" id="linkListarElencos">Elencos</a>
                         </div>
@@ -52,21 +54,21 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
         </nav>
-        
+
         <div id="corpoDaPagina">
 
-            <div id="conteudoInicial" class="text-center" style="margin-top: auto;">
-
-                Bem vindo ao Cadastro de Filmes.
+            <div id="conteudoInicial">
+                Bem Vindo ao Cadastro de Filmes.
             </div>
-            <br>
+
             <div class="modal fade" id="modalIncluirFilme" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Incluir série</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Incluir Filme</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -74,34 +76,29 @@
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="campoId">ID</label>
-                                    <input type="text" class="form-control" id="campoId"
-                                        aria-describedby="idHelp" placeholder="Informe o ID">
-                                </div>
-                                <div class="form-group">
                                     <label for="campoNome">Nome</label>
                                     <input type="text" class="form-control" id="campoNome"
-                                        aria-describedby="nomeHelp" placeholder="Informe o nome do Filme">
+                                        aria-describedby="nomeHelp" placeholder="Informe o nome do filme">
                                 </div>
                                 <div class="form-group">
                                     <label for="campoGenero">Gênero</label>
                                     <input type="text" class="form-control" id="campoGenero"
-                                        aria-describedby="generoHelp" placeholder="Informe o Gênero do Filme">
+                                        aria-describedby="generoHelp" placeholder="Informe o gênero do filme">
                                 </div>
                                 <div class="form-group">
                                     <label for="campoAnodeLancamento">Ano de Lançamento</label>
                                     <input type="text" class="form-control" id="campoAnodeLancamento"
-                                        aria-describedby="anodelancamentoHelp" placeholder="Informe o Ano de Lançamento do Filme">
+                                        aria-describedby="anodelancamentoHelp" placeholder="Informe o ano de lançamento do filme">
                                 </div>
                                 <div class="form-group">
-                                    <label for="campoCDiretor">Diretor</label>
+                                    <label for="campoDiretor">Diretor</label>
                                     <input type="text" class="form-control" id="campoDiretor"
-                                        aria-describedby="diretorHelp" placeholder="Informe o Diretor do Filme">
+                                        aria-describedby="diretorHelp" placeholder="Informe o diretor do filme">
                                 </div>
                                 <div class="form-group">
-                                    <label for="campoCPremio">Prêmios</label>
+                                    <label for="campoPremio">Prêmios</label>
                                     <input type="text" class="form-control" id="campoPremio"
-                                        aria-describedby="premioHelp" placeholder="Informe os Prêmios do Filme">
+                                        aria-describedby="premioHelp" placeholder="Informe os prêmios do filme">
                                 </div>
                                 <div class="form-group">
                                     <label for="campoIdProdutora">Produtora</label>
@@ -110,13 +107,15 @@
                                 </div>
                             </form>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button id="btIncluirFilme" type="button" class="btn btn-primary">Incluir</button>
+                            <button id="btnIncluirFilme" type="button" class="btn btn-primary">Incluir</button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="container" id="ListarProdutoras">
                 <table class="table table-striped table-hover" id="TabelaProdutoras">
                     <thead>
@@ -131,30 +130,30 @@
                     </tbody>
                 </table>
             </div>
-             <table class="table invisible table-striped table-hover" id="TabelaFilmes">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Gênero</th>
-                        <th scope="col">Ano de Lançamento</th>
-                        <th scope="col">Diretor</th>
-                        <th scope="col">Prêmios</th>
-                        <th scope="col">Excluir</th>
 
-                    </tr>
-                </thead>
-                <tbody id="corpoTabelaFilmes">
-                   
-                </tbody>
-            </table>
-        </div> 
-    </div>
-    <div class="container" id="ListarElencos">
+            <div class="container" id="ListarFilmes">
+                <table class="table table-striped table-hover" id="TabelaFilmes">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Gênero</th>
+                            <th scope="col">Ano de Lançamento</th>
+                            <th scope="col">Diretor</th>
+                            <th scope="col">Prêmios</th>
+                            <th scope="col">Produtoras</th>
+                            <th scope="col">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabelaFilmes">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="container" id="ListarElencos">
                 <table class="table table-striped table-hover" id="TabelaElencos">
                     <thead>
                         <tr>
-                            <th scope="col">Ator/atriz</th>
+                            <th scope="col">Ator/Atriz</th>
                             <th scope="col">Personagem</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Filme</th>
