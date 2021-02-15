@@ -1,8 +1,9 @@
 $(function() {
 
+    var urlX = 'http://rayssacastilhos.pythonanywhere.com/';
     function exibir_produtoras() {
         $.ajax({
-            url: 'http://localhost:5000/listar/Produtora',
+            url: urlX+'/listar/Produtora',
             method: 'GET',
             dataType: 'json',
             success: listar,
@@ -34,7 +35,7 @@ $(function() {
     
     function exibir_filmes() {
         $.ajax({
-            url: 'http://localhost:5000/listar/Filme',
+            url: urlX+'/listar/Filme',
             method: 'GET',
             dataType: 'json',
             success: listar,
@@ -78,7 +79,7 @@ $(function() {
 
     function carregarCombo(combo_id, nome_classe) {
         $.ajax({
-            url: 'http://localhost:5000/listar/'+nome_classe,
+            url: urlX+'/listar/'+nome_classe,
             method: 'GET',
             dataType: 'json',
             success: carregar,
@@ -116,7 +117,7 @@ $(function() {
             produtora_id = $("#campoProdutoraId").val();
             var dados = JSON.stringify({ nome: nome, genero: genero, ano_de_lancamento: ano_de_lancamento, diretor: diretor,premio: premio, produtora_id: produtora_id});
             $.ajax({
-                url: 'http://localhost:5000/incluir_filme',
+                url: urlX+'/incluir_filme',
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -155,7 +156,7 @@ $(function() {
         var nome_icone = "excluir_"; 
         var id_filme = componente_clicado.substring(nome_icone.length); 
         $.ajax({ 
-            url: 'http://localhost:5000/excluir_filme/'+id_filme, 
+            url: urlX+'/excluir_filme/'+id_filme, 
             type: 'delete',
             dataType: 'json', 
             success: filmeExcluido,
@@ -177,7 +178,7 @@ $(function() {
 
     function exibir_elencos() {
         $.ajax({
-            url: 'http://localhost:5000/listar/Elenco',
+            url: urlX+'/listar/Elenco',
             method: 'GET',
             dataType: 'json',
             success: listar,

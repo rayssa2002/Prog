@@ -58,7 +58,6 @@ class Filme(db.Model):
             }
 
 class Elenco(db.Model):
-    
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(254))
     personagem = db.Column(db.String(254))
